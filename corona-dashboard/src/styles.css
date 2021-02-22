@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0px; padding:0px;font-family: Roboto, "Helvetica Neue", sans-serif; }
+.chartContainer canvas {
+    max-height: 250px;
+    width: auto !important;
+}
+
+.chartContainer{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+mat-toolbar{
+    background-color: #323a46!important;
+    color: #adb5bd!important;
+    
+}
+
+ ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  
