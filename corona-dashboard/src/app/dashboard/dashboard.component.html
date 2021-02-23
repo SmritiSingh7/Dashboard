@@ -1,10 +1,10 @@
-<div class="grid-container" >
+<div class="container-fluid" style="margin-top: 20px" >
   <!--Top card for global data summary-->
 
   <div class="row topcard justify-content-md-center">
     <div class="col-xl-2 ">
       <div class="card-box">
-        <h2 class="header-title m-0 text-md-left text-center">Total cases</h2>
+        <h2 class="header-title m-0 text-md-left text-center">Total Cases</h2>
 
         <div class="topBoxes">
          
@@ -87,14 +87,14 @@
   <!--state overview card begins-->
   <div class="row top-buffer justify-content-md-center">
     <div class="col-sm-5">
-      <div class="card">
+      <div class="card box-shadow">
         <div class="card-body">
-          <h4 class="card-title">State Overview</h4><br>
-          <h5 class="card-subtitle mb-2 text-muted">Select the state to view the overall corona cases distribution of a state</h5>
+          <h2 class="card-title">State Overview</h2>
+          <h3 class="card-subtitle mb-2 text-muted">Select the state to view the overall corona cases distribution of a state</h3>
           <div class="more-button">
             <mat-form-field style="margin-top: 10px;" appearance="fill" >
               <mat-label>Select State</mat-label>
-              <mat-select [(value)]="selectedState" (selectionChange)="updatePieChartData($event)">
+              <mat-select [(value)]="selectedState" (selectionChange)="getSelectedStateData()">
                 <mat-option *ngFor="let state of statedropdown" [value]="state.value">{{state.viewValue}}</mat-option>
                 
               </mat-select>
@@ -116,23 +116,23 @@
     </div><!-- end col -->
 
     <div class="col-sm-5">
-      <div class="card">
+      <div class="card box-shadow">
         <div class="card-body">
-          <h4 class="card-title">History</h4><br>
-          <h5 class="card-subtitle mb-2 text-muted">Select the state and week to view the corona cases distribution</h5>
+          <h2 class="card-title">History</h2>
+          <h3 class="card-subtitle mb-2 text-muted">Select the state and week to view the corona cases distribution</h3>
           
           <div class="more-button">
 
             <mat-form-field style="margin-top: 10px;margin-right: 10px;" appearance="fill" >
               <mat-label>Select State</mat-label>
-              <mat-select [(value)]="selectedRegion" (selectionChange)="updateChartData($event)">
+              <mat-select [(value)]="selectedRegion" (selectionChange)="getSelectedRegionHistory()">
                 <mat-option *ngFor="let state of statedropdown" [value]="state.value">{{state.viewValue}}</mat-option>
                 
               </mat-select>
             </mat-form-field>
             <mat-form-field style="margin-top: 10px;" appearance="fill" >
               <mat-label>Select range</mat-label>
-              <mat-select [(value)]="selectedRange" (selectionChange)="updateChartData($event)">
+              <mat-select [(value)]="selectedRange" (selectionChange)="getSelectedRegionHistory()">
                 <mat-option *ngFor="let range of dropdownItems" [value]="range.value">{{range.viewValue}}</mat-option>
                 
               </mat-select>

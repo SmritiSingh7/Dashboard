@@ -22,12 +22,16 @@ import { DatePipe } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
+    HeaderComponent,
+    FooterComponent,
     
   ],
   imports: [

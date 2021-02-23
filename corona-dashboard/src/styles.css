@@ -19,9 +19,13 @@ mat-toolbar{
     color: #adb5bd!important;
     
 }
+.mat-header-cell {
+  
+  font-size: 15px;
+}
 
  ::-webkit-scrollbar {
-    width: 10px;
+  display: none;
   }
   ::-webkit-scrollbar-track {
     background: transparent;

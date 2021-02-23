@@ -1,4 +1,9 @@
 .material-icons.md-dark { color: #ff5b5b;
     margin: 10px;
  }
- 
+ #page-container {
+    position: relative;
+    min-height: 100vh;
+    width:100%;
+    left: 0;
+  }
