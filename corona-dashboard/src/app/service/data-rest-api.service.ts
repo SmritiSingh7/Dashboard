@@ -48,6 +48,19 @@ export class DataRestApiService implements OnInit{
     return this.http.get<any>(this.url_selectedstate + "/"+ id + "/history/cases/" + range);
   }
 
+  getGermanyDeathHistory(range:string):Observable<any> {
+    
+    return this.http.get<any>(this.url_germany + "/history/deaths/" + range);
+  }
+
+  getGermanyRecoveryHistory(range:string):Observable<any> {
+    return this.http.get<any>(this.url_germany + "/history/recovered/" + range);
+  }
+
+  getGermanyCasesHistory(range:string):Observable<any> {
+    return this.http.get<any>(this.url_germany +  "/history/cases/" + range);
+  }
+
   getData() {
     return this.http.get(`https://api.corona-zahlen.org/states`);
 }
@@ -56,5 +69,3 @@ export class DataRestApiService implements OnInit{
   
   
 }
-
-

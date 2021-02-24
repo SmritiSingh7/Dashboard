@@ -24,7 +24,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatSortModule} from '@angular/material/sort';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -49,7 +49,7 @@ import { FooterComponent } from './footer/footer.component';
     MatCardModule,
     MatMenuModule,MatSelectModule,
     HttpClientModule,
-    NgbModule,FormsModule,MatTableModule,MatSortModule
+    NgbModule,FormsModule,MatTableModule,MatSortModule,MatTooltipModule
   ],
   providers: [DataRestApiService,DatePipe],
   bootstrap: [AppComponent]

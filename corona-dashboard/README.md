@@ -1,27 +1,88 @@
-# CoronaDashboard
+<h1 align="center">Welcome to Germany Corona Statistics Dashboard  👋</h1>
+
+
+
+# About
+The application shows real-time data for the number of cases of Corona Virus across Germany.
+### ✨ Click to see the live data [DEMO](https://angular-app-dashboard.herokuapp.com/)
+
+
+
+
+## Technology Used
+Angular 11
+
+Typescript
+
+Javascript 
+
+Bootstrap
+
+Angular Material
+
+## Key Features of App :
+1 Real-Time data of no of cases of Corona Virus.
+
+2 Shows number of total cases, recovered and deaths.
+
+3 Show Data of All affected States.
+
+4 Show Data of selected state for a selected time period- (1 week - 4 week)
+
+5 Can sort Data in ascending /descending order 
+
+
+
+
+## Run Locally
+
+Prerequisite :  Node.js, npm and Angular CLI
+
+
+### STEP 1: Install Node.js https://nodejs.org/en/download/
+Click the Windows Installer button to download the latest default version.
+
+### STEP 2: npm package manager
+The Node.js installer includes the NPM package manager, so no need to install manually.
+
+### STEP 3: Verify installation
+Open a command prompt (or PowerShell), and enter the following to verify installion. Below command will give you the version installed.
+```sh
+node -v
+```
+```sh
+npm -v
+```
+### STEP 4: Install Angular CLI
+```sh
+npm install -g @angular/cli
+```
+
+### STEP 5: Clone the repository 
+
+```sh
+git clone https://github.com/SmritiSingh7/Dashboard.git
+```
+### STEP 6: Move to project location and Install dependencies 
+```sh
+cd corona-dashboard
+npm install
+```
+### STEP 7: Run
+```sh
+ng serve
+```
+Navigate to `http://localhost:4200/`. 
+
+
+
+## CoronaDashboard
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Rest API :Robert Koch-Institut API (v2): https://api.corona-zahlen.org/docs/
+A Rest API to query all relevant corona data for Germany based on the figures of the Robert Koch-Institut.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+* https://api.corona-zahlen.org/states
+* https://api.corona-zahlen.org/germany

@@ -29,21 +29,22 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource();
 
   statedropdown: Dropdown[] = [
-    { value: 'HH', viewValue: 'Hamburg' },
-    { value: 'SH', viewValue: 'Schleswig-Holstein' },
-    { value: 'NI', viewValue: 'Niedersachsen' },
-    { value: 'HB', viewValue: 'Bremen' },
-    { value: 'NW', viewValue: 'Nordrhein-Westfalen' },
-    { value: 'HE', viewValue: 'Hessen' },
-    { value: 'RP', viewValue: 'Rheinland-Pfalz' },
+    { value: 'Germany', viewValue: 'Germany' },
     { value: 'BW', viewValue: 'Baden-Württemberg' },
     { value: 'BY', viewValue: 'Bayern' },
-    { value: 'SL', viewValue: 'Saaland' },
     { value: 'BE', viewValue: 'Berlin' },
     { value: 'BB', viewValue: 'Brandenburg' },
+    { value: 'HB', viewValue: 'Bremen' },
+    { value: 'HH', viewValue: 'Hamburg' },
+    { value: 'HE', viewValue: 'Hessen' },
     { value: 'MV', viewValue: 'Mecklenburg-Vorpommern' },
+    { value: 'NI', viewValue: 'Niedersachsen' },
+    { value: 'NW', viewValue: 'Nordrhein-Westfalen' },
+    { value: 'RP', viewValue: 'Rheinland-Pfalz' },
+    { value: 'SL', viewValue: 'Saaland' },
     { value: 'SN', viewValue: 'Sachsen' },
     { value: 'ST', viewValue: 'Sachsen-Anhalt' },
+    { value: 'SH', viewValue: 'Schleswig-Holstein' },
     { value: 'TH', viewValue: 'Thüringen' },
   ];
 
@@ -54,8 +55,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     { value: '28', viewValue: '4 weeks' },
   ];
 
-  selectedState = 'HH';
-  selectedRegion = 'HH';
+  selectedState = 'BW';
+  selectedRegion = 'Germany';
   selectedRange = '7';
   statenames: any = [];
   statedataDeath: any = [];
@@ -126,6 +127,25 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   ];
   /**Bar chat ends */
 
+  statenamesdropdown: Dropdown[] = [
+    { value: 'BW', viewValue: 'Baden-Württemberg' },
+    { value: 'BY', viewValue: 'Bayern' },
+    { value: 'BE', viewValue: 'Berlin' },
+    { value: 'BB', viewValue: 'Brandenburg' },
+    { value: 'HB', viewValue: 'Bremen' },
+    { value: 'HH', viewValue: 'Hamburg' },
+    { value: 'HE', viewValue: 'Hessen' },
+    { value: 'MV', viewValue: 'Mecklenburg-Vorpommern' },
+    { value: 'NI', viewValue: 'Niedersachsen' },
+    { value: 'NW', viewValue: 'Nordrhein-Westfalen' },
+    { value: 'RP', viewValue: 'Rheinland-Pfalz' },
+    { value: 'SL', viewValue: 'Saaland' },
+    { value: 'SN', viewValue: 'Sachsen' },
+    { value: 'ST', viewValue: 'Sachsen-Anhalt' },
+    { value: 'SH', viewValue: 'Schleswig-Holstein' },
+    { value: 'TH', viewValue: 'Thüringen' },
+  ];
+
   @ViewChild(MatSort) sort: MatSort;
   ngAfterViewInit() {
     this.dataSource.sort = this.sort;
@@ -193,13 +213,78 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     );
   }
 
-  /******  Method called to update Piechart on selection change of states *******/
+  /******  Method called to update Barchart on selection change of states and weeks *******/
   getSelectedRegionHistory() {
     this.barChartData[0].data = [];
     this.barChartData[1].data = [];
     this.barChartData[2].data = [];
     this.barChartLabels = [];
 
+    if(this.selectedRegion == 'Germany'){
+      
+      this.dataRestApiService
+      .getGermanyDeathHistory(this.selectedRange)
+      .subscribe(
+        (data) => {
+          const deathCount: any[] = Object.keys(data.data).map(
+            (val) => data.data[val].deaths
+          );
+         
+          this.barChartData[0].data?.push(
+            deathCount.reduce((a, b) => a + b, 0)
+          );
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+
+      this.dataRestApiService
+      .getGermanyRecoveryHistory(this.selectedRange)
+      .subscribe(
+        (data) => {
+          const recoveryCount: any[] = Object.keys(data.data).map(
+            (val) => data.data[val].recovered
+          );
+         
+          this.barChartData[1].data?.push(
+            recoveryCount.reduce((a, b) => a + b, 0)
+          );
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+
+      this.dataRestApiService
+      .getGermanyCasesHistory(this.selectedRange)
+      .subscribe(
+        (data) => {
+          
+          const casesCount: any[] = Object.keys(data.data).map(
+            (val) => data.data[val].cases
+          );
+          const date: any[] =Object.keys(data.data).map(
+            (val) => data.data[val].date
+           );
+
+          const range: any[] = [
+            this.transformDate(date[0]),
+            this.transformDate(date[date.length - 1]),
+          ];
+         
+          this.barChartData[2].data?.push(
+            casesCount.reduce((a, b) => a + b, 0)
+          );
+          this.barChartLabels.push(range.join('-------'));
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    }
+    else
+    {
     /* fetch total deaths for a selected state and selected week */
     this.dataRestApiService
       .getSelectedRegionDeathHistory(this.selectedRegion, this.selectedRange)
@@ -269,11 +354,13 @@ export class DashboardComponent implements OnInit, AfterViewInit {
           console.log(err);
         }
       );
+
+    }
   }
 
   /** To tranform date */
   transformDate(date: Date) {
-    return this.datePipe.transform(date, 'yyyy-MM-dd');
+    return this.datePipe.transform(date, 'dd-MM-yyyy');
   }
 }
 
