@@ -81,8 +81,9 @@ Navigate to `http://localhost:4200/`.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.1.
 
 
-## API Endpoints used to fetch data
+## Rest API :Robert Koch-Institut API (v2): https://api.corona-zahlen.org/docs/
+A Rest API to query all relevant corona data for Germany based on the figures of the Robert Koch-Institut.
 
 * https://api.corona-zahlen.org/states
 * https://api.corona-zahlen.org/germany
-* https://api.corona-zahlen.org/states
+
