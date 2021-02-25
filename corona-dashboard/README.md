@@ -1,9 +1,11 @@
 <h1 align="center">Welcome to Germany Corona Statistics Dashboard  👋</h1>
 
 
-
 # About
 The application shows real-time data for the number of cases of Corona Virus across Germany.
+
+![4zekt6](https://user-images.githubusercontent.com/46601438/109130318-e0a68d80-7751-11eb-84b5-5d95d691b436.gif)
+
 ### ✨ Click to see the live data [DEMO](https://angular-app-dashboard.herokuapp.com/)
 
 
