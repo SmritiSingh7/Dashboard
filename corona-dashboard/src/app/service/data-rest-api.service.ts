@@ -61,9 +61,7 @@ export class DataRestApiService implements OnInit{
     return this.http.get<any>(this.url_germany +  "/history/cases/" + range);
   }
 
-  getData() {
-    return this.http.get(`https://api.corona-zahlen.org/states`);
-}
+
 
 
   

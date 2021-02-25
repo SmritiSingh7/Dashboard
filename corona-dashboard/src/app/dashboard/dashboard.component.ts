@@ -58,11 +58,7 @@ export class DashboardComponent implements OnInit, AfterViewInit {
   selectedState = 'BW';
   selectedRegion = 'Germany';
   selectedRange = '7';
-  statenames: any = [];
-  statedataDeath: any = [];
-  statedataCase: any = [];
-  statedataRecovered: any = [];
-  stateData: any[] = [];
+  
   todaycase: any;
   todayrecovered: any;
   todaydeath: any;
